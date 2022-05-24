@@ -21,12 +21,14 @@ else:
     host = 'localhost'
     port = 80
 
-service_host = 'notes1.gov4c.kz'
-service_port = 5001
+status_host = 'express.gov4c.kz'
+status_port = 80
 LOG_FILE = f'{BASE}/pdd.log'
 SPOOL = f'{BASE}/spool'
 debug = True
 trace_malloc = False
+language = 'ru'
+src_lang = 'file'
 
 print(f"=====> CONFIG. using: {using}, BASE: {BASE}, app_name: {app_name}")
 

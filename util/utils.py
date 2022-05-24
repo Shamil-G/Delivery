@@ -1,4 +1,5 @@
-from main_app import app, log, cfg
+from main_app import app, log
+import  app_config as cfg
 from util.i18n import i18n
 from flask import send_from_directory, session, redirect, url_for, request
 import psutil

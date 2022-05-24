@@ -1,4 +1,6 @@
 APP_NAME = Доставка
+CONTINUE = Продолжить
+CHECK_STATUS = Проверить статус
 STATUS_HISTORY = СТАТУС
 RESULT_HISTORY = РЕЗУЛЬТАТ
 DATE_HISTORY = ДАТА ТЕСТА
