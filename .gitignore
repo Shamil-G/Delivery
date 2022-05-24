@@ -1,0 +1,13 @@
+/init.bat
+venv/*
+__pycache__*
+.idea*
+/static/mistake-recognition/
+/static/photo/
+/live-photo/
+/reports/spool/
+*.log*
+*.jpg*
+chk
+i18n.kz
+i18n.ru
