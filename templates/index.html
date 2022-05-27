@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" xmlns:align-items="http://www.w3.org/1999/xhtml">
 <link rel="stylesheet" type="text/css" href="/static/styles/main.css">
 <meta charset="UTF-8">
 <meta name="viewport"
@@ -8,49 +8,53 @@
 <title>{% block title %}{% endblock %}</title>
 <body>
     <div class = "common-container">
-        <header class="header">
-            <div><a>{{ res_value('APP_NAME') }}</a></div>
-            <div><a></a></div>
-            <div class="header-r">
-                   {% if session['language'] == 'ru' %}
-                            <a href="/language/kz">{{ res_value('GOTO_KAZ_LANG') }}</a>
-                    {% else %}
-                            <a href="/language/ru">{{ res_value('GOTO_RUS_LANG') }}</a>
-                   {% endif %}
-                    <a href="/login">{{ res_value('LOGIN') }}</a>
-                    <a href="/logout">{{ res_value('LOGOUT') }}</a>
-
+        <header>
+            <div style="display: flex; justify-content: left; align-items: center">
+                <div><h2 style="margin-left: 20px;align: left;">GOV4C</h2></div>
+                <div><h4 style="margin-left: 20px; color:green; align: left;">{{ res_value('APP_NAME') }}</h4></div>
+                <div><h4 style="margin-left: 20px">{{ res_value('CONDITION') }}</h4></div>
             </div>
         </header>
 
-        <article class="article">
-            <form class="form_login" method="POST">
-            <table style="width:20%">
-                <tr>
-        <!--            <td>Имя:</td>-->
-                    <td><a>Введите номер заявки</a></td>
-                    <td><input class="input_order" type="text" name="num_order" placeholder="Введите номер заявки" value="002223410244">
-                    </td>
-                </tr>
-                <tr>
-                    <td><a>Введите ИИН</a></td>
-                    <td><input class="input_order" type="text"  name="iin" placeholder="Введите ИИН" value="691226402472">
-                    </td>
-                    <td><input class="bt register" type="submit" value="{{ res_value('CONTINUE') }}"></td>
-                </tr>
-            </table>
-            </form>
-        </article>
+        <section class="main-page">
+            <div class="container">
+                <div class="row">
 
-        <footer class="footer">
-              <div class="footer-l">
-                 <small>© 2021</small>
-              </div>
-              <div class="footer-r">
-                  <small style="visibility: hidden">{{ res_value('CREATORS') }}</small>
-                  <small style="visibility: hidden">{{ res_value('FOR_DEVELOPERS') }}</small>
-              </div>
-        </footer>
+                        <div class="div_comment">
+                            <h1>Доставка документов
+                            <br>до двери</h1>
+                            <p>
+                                Доставляем документы в городах областного значения (за исключением г.Туркестан) и Нур-Султан, Алматы, Шымкент
+                        </div>
+                        <div class="div_order">
+                            <form method="POST">
+                                <div class="form-doc">
+                                    <div class="form-doc-input">
+                                        <div>
+    {#                                        <input class="input_order" type="text" name="num_order" placeholder="Номер заказа" value="">#}
+                                            <input class="input_order" type="text" name="num_order" placeholder="Номер заказа" value="002223410244">
+{#                                            <input class="input_order" type="text" name="num_order" placeholder="Номер заказа" value="002209191024">#}
+                                        </div>
+                                        <div>
+                                            <input class="input_order" type="text"  name="iin" placeholder="ИИН" value="691226402472">
+{#                                            <input class="input_order" type="text"  name="iin" placeholder="ИИН" value="0008035001066">#}
+                                        </div>
+                                        <div>
+{#                                            <button class="button_continue" type="submit">{{ res_value('CONT_MYKHAT»')  }}</button>#}
+{#                                            <button class="button_continue" type="submit">{{ res_value('CONT_YANDEX')  }}</button>#}
+{#                                            <a class="button_continue" type="/status_1">{{ res_value('CONT_MYKHAT»')  }}</a>#}
+{#                                            <a class="button_continue" href="/status_yandex">{{ res_value('CONT_YANDEX')  }}</a>#}
+                                        </div>
+                                    </div>
+                                    <button class="button_continue" type="submit">{{ res_value('CONTINUE')  }}</button>
+                                </div>
+                            </form>
+                        </div>
+
+                </div>
+            </div>
+        </section>
+
     </div>
 </body>
 

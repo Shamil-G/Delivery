@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru" xmlns:align-items="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" type="text/css" href="/static/styles/order_status.css">
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>{% block title %}{% endblock %}</title>
+<body>
+    <div class = "common-container">
+        <header>
+            <div style="display: flex; justify-content: left; align-items: center">
+                <div><h2 style="margin-left: 20px;align: left;">GOV4C</h2></div>
+                <div><h4 style="margin-left: 20px; color:green; align: left;">{{ res_value('APP_NAME') }}</h4></div>
+                <div><h4 style="margin-left: 20px">{{ res_value('CONDITION') }}</h4></div>
+            </div>
+        </header>
+
+        <section class="main-page">
+            <div class="container">
+                <div class="row">
+                    <div class="div_left">
+                           <div class="div_order">
+                               <div class="title_section">О заказе</div>
+                               НОМЕР ЗАКАЗА</div>
+                                <div class="text_info">{{ num_order }}</div>
+                                <div>СТАТУС
+                                <div class="text_info">{{ status }}</div>
+                                <div>ОТДЕЛЕНИЕ</div>
+                                <div class="text_info">{{ org_nameRu }}</div>
+                                <div>ТИП ЗАЯВКИ</div>
+                                <div class="text_info">{{ serviceNameRu }}</div>
+                           </div>
+                    </div>
+                    <div class="div_right">
+                           <div class="div_order">
+                               <div class="title_section">Данные получателя</div>
+                               <div>ИИН</div>
+                               <div class="text_info">{{ iin }}</div>
+                               <div>ФАМИЛИЯ</div>
+                               <div class="text_info">{{ lastname }}</div>
+                               <div>ИМЯ</div>
+                               <div class="text_info">{{ firstname }}</div>
+                               <div>НОМЕР ТЕЛЕФОНА</div>
+                               <div class="text_info">{{ phone }} : {{ shep_phone }}</div>
+                           </div>
+                    </div>
+                    <div class="addr">
+                        <div class="div_addr">
+                           <div class="div_addr_delivery title_section">АДРЕС ДОСТАВКИ</div>
+                           <div class="div_flex">
+                               <div class="div_left_addr">
+                                   <div>ГОРОД</div>
+                                   <input type="text" name="city" size="32" maxlength="32" style="width: 100%">
+                                   <div>ДЕТАЛИ АДРЕСА</div>
+                                   <textarea type="text" name="detAddr" columns="160" rows="2" class="det_addr"></textarea>
+    {#                               <div class="text_info">{{ addressDetail }}</div>#}
+                               </div>
+                               <div class="div_right_addr">
+                                   <div>УЛИЦА/МИКРОРАЙОН</div>
+    {#                               <div class="text_info">{{ street }}</div>#}
+                                   <div><input type="street" name="flat" size="62" maxlength="128"></div>
+                                   <div class="div_house_flat">
+                                       <div class="div_house">
+                                           <div>ДОМ</div>
+                                           <input type="text" name="house" size="26" maxlength="26">
+    {#                                       <div class="text_info">{{ house }}</div>#}
+                                       </div>
+                                       <div class="div_flat">
+                                            <div>КВАРТИРА</div>
+                                            <input type="text" name="flat" size="25" maxlength="25">
+    {#                                        <div class="text_info">{{ flat }}</div>#}
+                                       </div>
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+
+</html>

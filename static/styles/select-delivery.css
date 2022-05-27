@@ -1,0 +1,67 @@
+@import url('clear.css');
+
+:root{
+    /*--base-color-text: #307080;*/
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    /*color: #307080;*/
+    /*color: var(--base-color-text);*/
+    text-align: left;
+    /*font-family: Calibri, sans-serif;*/
+    /*font-family: 'Raleway', sans-serif;*/
+    background-repeat: no-repeat;
+    position: relative;
+    background-color: #F5F1EB;
+    overflow-x: hidden;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    /*background-image: url(mathematics.jpg);*/
+}
+/* Для первой страницы (Ввод идентификатора) не нужна зона COMMAND*/
+.common-container {
+    min-height: 100%;
+}
+header {
+    border-bottom: 3px solid #208855;
+    background: #ffffff;
+    color: black;
+}
+.main-page {
+    padding: 20% 0;
+    height: 100%;
+    display: block;
+    justify-content: center;
+    align-items: center; /*Для выравнивания заголовка по центру*/
+}
+.div_float {
+    float: left;
+}
+.container{
+    display: flex;
+    justify-content: center
+}
+.iin {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.button_delivery{
+    background: #208855;
+    color: #cccccc;
+    border-radius: 22px;
+    border: none;
+    padding: 10px 20px 10px 20px;
+    cursor: pointer;
+    margin: 20px;
+    font-size: 48px;
+    text-decoration: none;
+}
+.button_delivery:hover {
+    background-color: #1c7b4d;
+    color: white;
+}
+

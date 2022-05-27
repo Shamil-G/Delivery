@@ -1,5 +1,6 @@
-APP_NAME = Доставка
-CONTINUE = Продолжить
+APP_NAME = Доставка документов
+CONTINUE = Далее
+CONDITION = Условия доставки
 CHECK_STATUS = Проверить статус
 STATUS_HISTORY = СТАТУС
 RESULT_HISTORY = РЕЗУЛЬТАТ

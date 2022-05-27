@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru" xmlns:align-items="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" type="text/css" href="/static/styles/select-delivery.css">
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>{% block title %}{% endblock %}</title>
+<body>
+    <div class = "common-container">
+        <header>
+            <div style="display: flex; justify-content: left; align-items: center">
+                <div><h2 style="margin-left: 20px;align: left;">GOV4C</h2></div>
+                <div><h4 style="margin-left: 20px; color:green; align: left;">{{ res_value('APP_NAME') }}</h4></div>
+                <div><h4 style="margin-left: 20px">{{ res_value('CONDITION') }}</h4></div>
+            </div>
+        </header>
+
+        <section class="main-page">
+            <div class="container">
+                <a class="iin">ИИН: {{ iin }}</a>
+            </div>
+            <div class="container">
+                <div>
+                    <a class="button_delivery" href="/status_mykhat">myKHAT</a>
+                </div>
+                <div class="div_float">
+                    <a class="button_delivery" href="/status_yandex">Yandex</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+
+</html>

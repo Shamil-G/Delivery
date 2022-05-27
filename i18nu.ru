@@ -1,5 +1,7 @@
-APP_NAME = Доставка
-CONTINUE = Продолжить
+APP_NAME = Доставка документов
+CONT_MYKHAT = MYKHAT
+CONT_YANDEX = Яндекс
+CONDITION = Условия доставки
 CHECK_STATUS = Проверить статус
 STATUS_HISTORY = СТАТУС
 RESULT_HISTORY = РЕЗУЛЬТАТ
