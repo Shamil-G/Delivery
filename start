@@ -1,4 +1,4 @@
-rem ENV_HOME=/home/cut_pdf/RECEIPT/venv/bin
+ENV_HOME=/home/delivery/Delivery/venv/bin
 python3 -m venv venv
 . $ENV_HOME/activate
 pip install --upgrade pip
@@ -11,9 +11,9 @@ pip install flask
 #pip install reportlab
 #pip install flask_cors
 pip install requests
-#pip install psutil
+pip install psutil
 #pip install redis
 #pip install flask_session
 #pip install pdfrw
-#pip install gunicorn
+pip install gunicorn
 python3 main_app.py

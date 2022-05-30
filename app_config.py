@@ -6,14 +6,14 @@ if using == 'DEV_WIN_HOME':
 elif using == 'DEV_WIN':
     BASE = f'C:/Shamil/{app_name}'
 else:
-    BASE = f'/home/cut_pdf/{app_name}'
+    BASE = f'/home/delivery/{app_name}'
 
 if using[0:7] != 'DEV_WIN':
-    host = 'notes1.gov4c.kz'
+    host = 'express.gov4c.kz'
     os = 'unix'
     debug_level = 2
     FACE_CONTROL_ENABLE = True
-    port = 5000
+    port = 5050
 else:
     os = '!unix'
     debug_level = 4
@@ -21,15 +21,16 @@ else:
     host = 'localhost'
     port = 80
 
+
 status_host = 'express.gov4c.kz'
 status_port = 80
-LOG_FILE = f'{BASE}/pdd.log'
+LOG_FILE = f'{BASE}/delivery.log'
 SPOOL = f'{BASE}/spool'
 debug = True
 trace_malloc = False
 language = 'ru'
 src_lang = 'file'
-myKHAT_host = "http://express.gov4c.kz"
+myKHAT_host = "http://express.gov4c.kz/mykhat"
 YANDEX_host = 'https://express.insol.kz/svcapi/api/IntegrationMvc/CallbackV2'
 
 

@@ -1,0 +1,9 @@
+systemctl get-default
+systemctl daemon-reload
+
+systemctl stop delivery
+systemctl status -l delivery
+systemctl start delivery
+sleep 1
+systemctl status -l delivery
+systemctl reload nginx

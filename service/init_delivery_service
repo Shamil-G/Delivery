@@ -1,0 +1,5 @@
+#systemctl get-default
+systemctl daemon-reload
+systemctl enable /home/delivery/Delivery/service/delivery.service
+systemctl start delivery
+systemctl status -l delivery

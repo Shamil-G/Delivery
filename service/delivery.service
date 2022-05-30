@@ -1,0 +1,16 @@
+[Unit]
+Description=Gunicorn instance to serve DELIVERY
+After=network.target
+
+[Service]
+Type=simple
+User=delivery
+Group=root
+WorkingDirectory=/home/delivery/Delivery
+#Environment="LD_LIBRARY_PATH=/home/pdd/instantclient_21_4"
+ExecStart=/home/delivery/Delivery/venv/bin/gunicorn
+
+[Install]
+WantedBy=multi-user.target
+
+
