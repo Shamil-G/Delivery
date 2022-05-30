@@ -31,18 +31,30 @@ header {
     color: black;
 }
 .main-page {
-    padding: 20% 0;
+    padding: 15% 0;
     height: 100%;
     display: block;
     justify-content: center;
     align-items: center; /*Для выравнивания заголовка по центру*/
 }
-.div_float {
+.div_top {
+    margin-bottom: 20px;
     float: left;
 }
-.container{
+.div_float {
+    margin-top: 20px;
+    float: left;
+}
+.div_block{
+    display: block;
+}
+.div_flex{
     display: flex;
-    justify-content: center
+}
+.container{
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center; /*Для выравнивания заголовка по центру*/
 }
 .iin {
     font-size: 36px;

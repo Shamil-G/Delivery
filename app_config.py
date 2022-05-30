@@ -29,6 +29,9 @@ debug = True
 trace_malloc = False
 language = 'ru'
 src_lang = 'file'
+myKHAT_host = "http://express.gov4c.kz"
+YANDEX_host = 'https://express.insol.kz/svcapi/api/IntegrationMvc/CallbackV2'
+
 
 print(f"=====> CONFIG. using: {using}, BASE: {BASE}, app_name: {app_name}")
 

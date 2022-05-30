@@ -31,7 +31,7 @@ header {
     color: black;
 }
 .main-page {
-  padding: 20% 0;
+  padding: 15% 0;
     height: 100%;
   display: flex; /*Для выравнивания заголовка по центру*/
   /*display: block;*/
@@ -140,6 +140,12 @@ header {
 .button_continue:hover {
     background-color: #1c7b4d;
     color: #cccccc;
+}
+.info {
+    color: white;
+    /*margin-left:15px;*/
+    /*padding-right: 5px;*/
+    /*text-decoration: none;*/
 }
 a[href^='/language'], header a[href^='/log'] {
     color: white;

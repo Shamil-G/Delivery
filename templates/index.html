@@ -5,14 +5,14 @@
 <meta name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>{% block title %}{% endblock %}</title>
 <body>
     <div class = "common-container">
         <header>
             <div style="display: flex; justify-content: left; align-items: center">
                 <div><h2 style="margin-left: 20px;align: left;">GOV4C</h2></div>
+<title>{% block title %}{% endblock %}</title>
                 <div><h4 style="margin-left: 20px; color:green; align: left;">{{ res_value('APP_NAME') }}</h4></div>
-                <div><h4 style="margin-left: 20px">{{ res_value('CONDITION') }}</h4></div>
+{#                <div><h4 style="margin-left: 20px">{{ res_value('CONDITION') }}</h4></div>#}
             </div>
         </header>
 
@@ -20,12 +20,12 @@
             <div class="container">
                 <div class="row">
 
-                        <div class="div_comment">
-                            <h1>Доставка документов
-                            <br>до двери</h1>
-                            <p>
-                                Доставляем документы в городах областного значения (за исключением г.Туркестан) и Нур-Султан, Алматы, Шымкент
-                        </div>
+{#                        <div class="div_comment">#}
+{#                            <h1>Доставка документов#}
+{#                            <br>до двери</h1>#}
+{#                            <p>#}
+{#                                Доставляем документы в городах областного значения (за исключением г.Туркестан) и Нур-Султан, Алматы, Шымкент#}
+{#                        </div>#}
                         <div class="div_order">
                             <form method="POST">
                                 <div class="form-doc">
@@ -48,6 +48,7 @@
                                     </div>
                                     <button class="button_continue" type="submit">{{ res_value('CONTINUE')  }}</button>
                                 </div>
+                                <div class="info">{{ info }}</div>
                             </form>
                         </div>
 

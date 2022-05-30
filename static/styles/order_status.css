@@ -43,13 +43,16 @@ header {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+    background: lightyellow;
+    box-shadow: 10px 12px 12px;
+    border-radius: 28px;
+    border: 1px solid #9C1A1C;
 }
 .row {
+
     display: flex;
     flex-wrap: wrap;
     margin: auto;
-    background-color: #cccccc;
-    border-radius: 20px;
 }
 .addr{
     /*position: relative;*/

@@ -12,25 +12,27 @@
             <div style="display: flex; justify-content: left; align-items: center">
                 <div><h2 style="margin-left: 20px;align: left;">GOV4C</h2></div>
                 <div><h4 style="margin-left: 20px; color:green; align: left;">{{ res_value('APP_NAME') }}</h4></div>
-                <div><h4 style="margin-left: 20px">{{ res_value('CONDITION') }}</h4></div>
+{#                <div><h4 style="margin-left: 20px">{{ res_value('CONDITION') }}</h4></div>#}
             </div>
         </header>
 
-        <section class="main-page">
-            <div class="container">
-                <a class="iin">ИИН: {{ iin }}</a>
-            </div>
-            <div class="container">
-                <div>
-                    <a class="button_delivery" href="/status_mykhat">myKHAT</a>
+        <section class="main-page div_flex">
+            <div class="container div_block">
+                <div class="container div_flex">
+                    <a class="iin">ИИН:</a>
+                    <a class="iin">{{iin}}</a>
                 </div>
-                <div class="div_float">
-                    <a class="button_delivery" href="/status_yandex">Yandex</a>
+                <div class="container div_flex">
+{#                    <div class="div_top">#}
+                        <a class="button_delivery" href="/status_mykhat">myKHAT</a>
+{#                    </div>#}
+{#                    <div class="div_float">#}
+                        <a class="button_delivery" href="/status_yandex">Yandex</a>
+{#                    </div>#}
                 </div>
             </div>
         </section>
 
     </div>
 </body>
-
 </html>

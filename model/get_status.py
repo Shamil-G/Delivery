@@ -7,7 +7,6 @@ import json
 def get_status(num_order, iin):
     url = f'http://{cfg.status_host}:{cfg.status_port}/ddocs/api/v1/find/{iin}/{num_order}'
     status = 0
-    resp_json = ''
     result = {}
     try:
         log.info(f"SERVICE REQUEST: num_order: '{num_order}', iin: {iin}, url: {url}")
@@ -73,4 +72,5 @@ def get_status(num_order, iin):
     except Exception as e:
         log.error(f"=====> ERROR REQUEST: {num_order} : {iin}. error: {e}")
     finally:
+        # print(f"====> 2. GET STATUS. RESULT: {result}")
         return status, result
