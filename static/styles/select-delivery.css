@@ -57,23 +57,25 @@ header {
     align-items: center; /*Для выравнивания заголовка по центру*/
 }
 .iin {
-    font-size: 36px;
+    font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
 }
 .button_delivery{
-    background: #208855;
+    background-color: #1c7b4d;
     color: #cccccc;
-    border-radius: 22px;
+    border-radius: 16px;
     border: none;
-    padding: 10px 20px 10px 20px;
+    padding: 5px 15px 5px 15px;
     cursor: pointer;
     margin: 20px;
-    font-size: 48px;
+    font-size: 24px;
     text-decoration: none;
 }
 .button_delivery:hover {
-    background-color: #1c7b4d;
+    background: #208855;
     color: white;
 }
-
+input:focus, textarea:focus, select:focus{
+        outline: none;
+}

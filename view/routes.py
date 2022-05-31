@@ -53,10 +53,10 @@ def view_select_delivery(iin, num_order):
     status, result = get_status(num_order, iin)
     log.info(f"DELIVERY STARTED. iin: {iin}, num_order: {num_order}, status: {status}, result: {result} ")
     if status == 0:
-        session['info'] = f"Для ИИН: {iin} заказ №:{num_order} отсутствует"
+        session['info'] = f"Для ИИН: {iin} Заказ №:{num_order} отсутствует"
         return redirect(url_for('view_index'))
     session['result'] = result
-    log.info(f"------> DELIVERY SESSION RESULT: {session['result']}")
+    # log.info(f"------> DELIVERY SESSION RESULT: {session['result']}")
     return render_template("select_delivery.html", iin=session['iin'])
 
 
@@ -70,6 +70,8 @@ def view_index():
             session['iin'] = iin
             session['num_order'] = num_order
             return redirect(url_for('view_select_delivery', iin=iin, num_order=num_order))
+        else:
+            session['info'] = f'Не введен номер Заказа или ИИН'
     info = ''
     if 'info' in session:
         info = session['info']

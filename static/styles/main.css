@@ -98,6 +98,7 @@ header {
     margin: 20px;
     background-color: #2F5643;
     color: gray;
+    justify-content: center
 }
 
 .form-doc {
@@ -152,4 +153,7 @@ a[href^='/language'], header a[href^='/log'] {
     margin-left:15px;
     padding-right: 5px;
     text-decoration: none;
+}
+input:focus, textarea:focus, select:focus{
+    outline: none;
 }
