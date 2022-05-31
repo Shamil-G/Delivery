@@ -38,6 +38,7 @@ def view_new_mykhat():
 @app.route('/status_yandex', methods=['POST', 'GET'])
 def view_status_yandex():
     if 'result' not in session:
+        print(f'-----> Yandex. Redirect to view_index ')
         return redirect(url_for('view_index'))
     new_url = request_yandex()
     print(f'-----> Yandex. Redirect to: {new_url} ')
@@ -55,6 +56,7 @@ def view_select_delivery(iin, num_order):
         session['info'] = f"Для ИИН: {iin} заказ №:{num_order} отсутствует"
         return redirect(url_for('view_index'))
     session['result'] = result
+    log.info(f"------> DELIVERY SESSION RESULT: {session['result']}")
     return render_template("select_delivery.html", iin=session['iin'])
 
 

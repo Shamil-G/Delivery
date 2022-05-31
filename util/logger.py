@@ -10,7 +10,7 @@ def init_service_logger():
     # Console
     logging.getLogger('DELIVERY-SERVICE').addHandler(logging.StreamHandler())
     logger.setLevel(logging.INFO)
-    fh = logging.FileHandler("service.log", encoding="UTF-8")
+    fh = logging.FileHandler("delivery.log", encoding="UTF-8")
     # fh = RotatingFileHandler(cfg.LOG_FILE, encoding="UTF-8", maxBytes=100000000, backupCount=5)
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     fh.setFormatter(formatter)
