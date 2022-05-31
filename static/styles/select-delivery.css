@@ -37,6 +37,16 @@ header {
     justify-content: center;
     align-items: center; /*Для выравнивания заголовка по центру*/
 }
+.row {
+    display: block;
+    justify-content: center;
+    align-items: center; /*Для выравнивания заголовка по центру*/
+    border: 1px solid rgba(0, 47, 189, 0.3);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
+    background-color: lightyellow;
+}
 .div_top {
     margin-bottom: 20px;
     float: left;
@@ -60,10 +70,11 @@ header {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
+    border-bottom: 1px solid #ff0000;
 }
 .button_delivery{
-    background-color: #1c7b4d;
-    color: #cccccc;
+    background: #208855;
+    color: white;
     border-radius: 16px;
     border: none;
     padding: 5px 15px 5px 15px;
@@ -73,8 +84,8 @@ header {
     text-decoration: none;
 }
 .button_delivery:hover {
-    background: #208855;
-    color: white;
+    background-color: #1c7b4d;
+    color: #cccccc;
 }
 input:focus, textarea:focus, select:focus{
         outline: none;

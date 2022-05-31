@@ -61,9 +61,9 @@ header {
     justify-content: center
 }
 .row {
-    display: flex;
-    flex-wrap: wrap;
-    margin: auto;
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    /*margin: auto;*/
 }
 .main-page-text {
 
@@ -96,8 +96,9 @@ header {
     border-radius: 20px;
     padding: 20px;
     margin: 20px;
-    background-color: #2F5643;
-    color: gray;
+    background-color: lightyellow;
+    /*background-color: #2F5643;*/
+    /*color: gray;*/
     justify-content: center
 }
 
@@ -109,22 +110,6 @@ header {
 .form-doc-input {
     display: block;
     margin-right: 16px;
-}
-.form-doc input {
-    align-items: center;
-    font-size: 1rem;
-    /*font-weight: 400;*/
-    line-height: 1.5;
-    /*height: 45px;*/
-    border: none;
-    width: 100%;
-    /*font-weight: 600;*/
-    color: white;
-    /*font-size: 28px;*/
-    margin-top: 10px;
-    margin-bottom: 12px;
-    background-color: transparent;
-    border-bottom: 1px solid white;
 }
 .button_continue{
     background: #208855;
@@ -143,7 +128,9 @@ header {
     color: #cccccc;
 }
 .info {
-    color: white;
+    color: black;
+    margin-top: 18px;
+    font-weight: bold;
     /*margin-left:15px;*/
     /*padding-right: 5px;*/
     /*text-decoration: none;*/
@@ -156,4 +143,20 @@ a[href^='/language'], header a[href^='/log'] {
 }
 input:focus, textarea:focus, select:focus{
     outline: none;
+}
+.form-doc input {
+    align-items: center;
+    font-size: 1rem;
+    /*font-weight: 400;*/
+    line-height: 1.5;
+    /*height: 45px;*/
+    border: none;
+    width: 100%;
+    /*font-weight: 600;*/
+    color: black;
+    /*font-size: 28px;*/
+    margin-top: 10px;
+    margin-bottom: 12px;
+    background-color: transparent;
+    border-bottom: 1px solid #ff0000;
 }
