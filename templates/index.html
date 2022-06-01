@@ -17,45 +17,20 @@
         </header>
 
         <section class="main-page">
-            <div class="container">
-                <div class="row">
-
-{#                        <div class="div_comment">#}
-{#                            <h1>Доставка документов#}
-{#                            <br>до двери</h1>#}
-{#                            <p>#}
-{#                                Доставляем документы в городах областного значения (за исключением г.Туркестан) и Нур-Султан, Алматы, Шымкент#}
-{#                        </div>#}
-                        <div class="div_order">
-                            <form method="POST">
-                                <div class="form-doc">
-                                    <div class="form-doc-input">
-                                        <div>
-    {#                                        <input class="input_order" type="text" name="num_order" placeholder="Номер заказа" value="">#}
-                                            <input class="input_order" type="text" name="num_order" placeholder="Номер заказа" value="002223410244">
-{#                                            <input class="input_order" type="text" name="num_order" placeholder="Номер заказа" value="002209191024">#}
-                                        </div>
-                                        <div>
-                                            <input class="input_order" type="text"  name="iin" placeholder="ИИН" value="691226402472">
-{#                                            <input class="input_order" type="text"  name="iin" placeholder="ИИН" value="0008035001066">#}
-                                        </div>
-                                        <div>
-{#                                            <button class="button_continue" type="submit">{{ res_value('CONT_MYKHAT»')  }}</button>#}
-{#                                            <button class="button_continue" type="submit">{{ res_value('CONT_YANDEX')  }}</button>#}
-{#                                            <a class="button_continue" type="/status_1">{{ res_value('CONT_MYKHAT»')  }}</a>#}
-{#                                            <a class="button_continue" href="/status_yandex">{{ res_value('CONT_YANDEX')  }}</a>#}
-                                        </div>
-                                    </div>
-                                    <button class="button_continue" type="submit">{{ res_value('CONTINUE')  }}</button>
-                                </div>
-                            </form>
-                        <div class="info">{{ info }}</div>
+            <div class="div_order">
+                <form method="POST">
+                    <div class="form-doc grid_box" >
+                        <div>
+                                <input class="input_order" type="text" name="num_order" width="12" maxlength="12" placeholder="Номер заказа" value="002223410244">
+                                <input class="input_order" type="text"  name="iin" width="12" maxlength="12" placeholder="ИИН" value="691226402472">
                         </div>
-                </div>
+                        <button class="button_continue" type="submit">{{ res_value('CONTINUE')  }}</button>
+                    </div>
+                </form>
+            <div class="info">{{ info }}</div>
             </div>
         </section>
 
     </div>
 </body>
-
 </html>

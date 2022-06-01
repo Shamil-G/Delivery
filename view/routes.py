@@ -8,31 +8,14 @@ import json
 from model.yandex import *
 
 
-@app.route('/status_mykhat', methods=['POST', 'GET'])
-def view_status_mykhat():
-    # result = session['result']
-    # print(f"===> VIEW STATUS myKHAT. PAYMENTS. url: {cfg.myKHAT_host} : {result}")
-    # if 'iscash' in result and result['iscash']==False:
-    #     return redirect('new_order_mykhat')
-    # else:
-    return redirect(cfg.myKHAT_host)
-
-
-@app.route('/new_order_mykhat', methods=['POST', 'GET'])
-def view_new_mykhat():
-    if 'result' in session:
-        result = session['result']
-    else:
-        return redirect(url_for('view_index'))
-    print(f'STATUS_ORDER. {result} ')
-    if request.method == "POST":
-        print(f'Получена команда VIEW_ORDER')
-        return redirect(url_for('view_index'))
-    return render_template("new_mykhat.html", num_order=result['num_order'], iin=result['iin'],
-                           firstname=result['firstname'], lastname=result['lastname'],
-                           phone=result['contacts'],
-                           org_nameRu=result['org_nameRu'],
-                           serviceNameRu=result['serviceNameRu'])
+# @app.route('/status_mykhat', methods=['POST', 'GET'])
+# def view_status_mykhat():
+#     # result = session['result']
+#     # print(f"===> VIEW STATUS myKHAT. PAYMENTS. url: {cfg.myKHAT_host} : {result}")
+#     # if 'iscash' in result and result['iscash']==False:
+#     #     return redirect('new_order_mykhat')
+#     # else:
+#     return redirect(cfg.myKHAT_host)
 
 
 @app.route('/status_yandex', methods=['POST', 'GET'])
@@ -57,7 +40,7 @@ def view_select_delivery(iin, num_order):
         return redirect(url_for('view_index'))
     session['result'] = result
     # log.info(f"------> DELIVERY SESSION RESULT: {session['result']}")
-    return render_template("select_delivery.html", iin=session['iin'])
+    return render_template("select_delivery.html", iin=session['iin'], url_my_khat=cfg.myKHAT_host)
 
 
 @app.route('/', methods=['POST', 'GET'])

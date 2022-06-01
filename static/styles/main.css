@@ -10,7 +10,7 @@ html, body {
     /*color: var(--base-color-text);*/
     text-align: left;
     /*font-family: Calibri, sans-serif;*/
-    /*font-family: 'Raleway', sans-serif;*/
+    font-family: 'Raleway', sans-serif;
     background-repeat: no-repeat;
     position: relative;
     background-color: #F5F1EB;
@@ -32,96 +32,48 @@ header {
 }
 .main-page {
   padding: 15% 0;
-    height: 100%;
+  height: 100%;
   display: flex; /*Для выравнивания заголовка по центру*/
-  /*display: block;*/
-  /*margin: 0;*/
-  /*height: 280px;*/
   justify-content: center;
   align-items: center; /*Для выравнивания заголовка по центру*/
-  /*grid-area: article_login;  !* задаем имя элемента *!*/
-  /*  width: 100%;*/
-  /*  padding-right: 15px;*/
-  /*  padding-left: 15px;*/
-  /*  margin-right: auto;*/
-  /*  margin-left: auto;*/
 }
-
-.container{
-    display: flex;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    overflow: auto;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    justify-content: center
+.float_left{
+    float: left;
 }
-.row {
-    /*display: flex;*/
-    /*flex-wrap: wrap;*/
-    /*margin: auto;*/
+.float_right{
+    float: right;
 }
-.main-page-text {
-
-}
-.div_comment{
-    /*position: relative;*/
-    width: 40%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-left: 10%;
-    color: #208855;
-}
-.div_comment h1{
-    font-size: 24px;
-    text-align: left;
-    /*line-height: 160%;*/
-    margin-bottom: 8px;
-    color: #208855;
-}
-.div_comment p{
-    font-size: 16px;
-    color: #333333;
-    margin: 0;
+.grid_box{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(130px, 1fr));
+    grid-template-rows: repeat(auto-fill,minmax(32px, 1fr));
 }
 .div_order{
-    /*width: 350px;*/
-    /*height: 80px;*/
-    float: left;
     border: 1px solid rgba(0, 47, 189, 0.3);
     border-radius: 20px;
-    padding: 20px;
+    padding: 20px 20px 0px 20px;
     margin: 20px;
     background-color: lightyellow;
-    /*background-color: #2F5643;*/
-    /*color: gray;*/
     justify-content: center
 }
 
 .form-doc {
-    display: flex;
     align-items: flex-end;
-    position: relative;
-}
-.form-doc-input {
-    display: block;
-    margin-right: 16px;
+    margin-bottom: 15px;
+    /*position: relative;*/
 }
 .button_continue{
     background: #208855;
     color: white;
-    /*float: left;*/
-    border-radius: 33px;
-    font-weight: 600;
-    font-size: 16px;
+    width: 125px;
+    border-radius: 16px;
+    font-size: 1rem;
     border: none;
-    padding: 10px 46px;
+    padding: 10px 40px;
     cursor: pointer;
-    margin-bottom: 12px;
+    margin-top: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 .button_continue:hover {
     background-color: #1c7b4d;
@@ -131,32 +83,22 @@ header {
     color: black;
     margin-top: 18px;
     font-weight: bold;
-    /*margin-left:15px;*/
-    /*padding-right: 5px;*/
-    /*text-decoration: none;*/
-}
-a[href^='/language'], header a[href^='/log'] {
-    color: white;
-    margin-left:15px;
-    padding-right: 5px;
-    text-decoration: none;
 }
 input:focus, textarea:focus, select:focus{
     outline: none;
 }
 .form-doc input {
     align-items: center;
-    font-size: 1rem;
+    font-size: 1.2rem;
     /*font-weight: 400;*/
     line-height: 1.5;
     /*height: 45px;*/
     border: none;
-    width: 100%;
+    width: 130px;
     /*font-weight: 600;*/
     color: black;
     /*font-size: 28px;*/
     margin-top: 10px;
-    margin-bottom: 12px;
     background-color: transparent;
     border-bottom: 1px solid #ff0000;
 }
