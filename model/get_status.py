@@ -38,7 +38,7 @@ def get_status(num_order, iin):
             result['courier'] = order['courier']
             result['orderStatusUpdates'] = order['orderStatusUpdates']
             result['payments'] = order['payments']
-            print(f'------>>> Type order: {type(order["shepOrderData"])}')
+            # print(f'------>>> Type order: {type(order["shepOrderData"])}')
             if type(order["shepOrderData"]) is str:
                 shepOrderData = json.loads(order['shepOrderData'])
             else:
