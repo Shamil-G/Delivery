@@ -70,6 +70,7 @@ def get_status(num_order, iin):
         log.info(f"SERVICE RESPONSE. Resp: {resp_json}")
         resp.close()
     except Exception as e:
+        status = 500
         log.error(f"=====> ERROR REQUEST: {num_order} : {iin}. error: {e}")
     finally:
         # print(f"====> 2. GET STATUS. RESULT: {result}")

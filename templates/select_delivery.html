@@ -10,27 +10,31 @@
     <div class = "common-container">
         <header>
             <div style="display: flex; justify-content: left; align-items: center">
-                <div><h2 style="margin-left: 20px;align: left;">GOV4C</h2></div>
-                <div><h4 style="margin-left: 20px; color:green; align: left;">{{ res_value('APP_NAME') }}</h4></div>
+                <div><h4 style="margin-left: 20px;align: left;">GOV4C</h4></div>
+                <div><h5 style="margin-left: 20px; color:green; align: left;">{{ res_value('APP_NAME') }}</h5></div>
 {#                <div><h4 style="margin-left: 20px">{{ res_value('CONDITION') }}</h4></div>#}
             </div>
         </header>
 
-        <section class="main-page div_flex">
-            <div class="row">
-                <div class="container div_flex">
-                    <a class="iin">ИИН:</a>
-                    <a class="iin">{{iin}}</a>
-                </div>
-                <div class="container div_flex">
+        <section class="main-page">
+{#            <div class="div_order">#}
+            <div class="div_order grid_box">
+                <a class="iin">ИИН: {{iin}}</a>
+                <div></div>
+{#                <div>#}
+{#                </div>#}
+{#                <div class="form-doc grid_box">#}
 {#                    <div class="div_top">#}
 {#                        <a class="button_delivery" href="/status_mykhat">myKHAT</a>#}
-                        <a class="button_delivery" href="{{ url_my_khat }}">myKHAT</a>
+{#                    <div>#}
+                        <a class="button_delivery a_button" href="{{ url_my_khat }}">myKHAT</a>
 {#                    </div>#}
-{#                    <div class="div_float">#}
-                        <a class="button_delivery" href="/status_yandex">Yandex</a>
+{#                    <div>#}
+                        <a class="button_delivery a_button" href="/status_yandex">Yandex</a>
 {#                    </div>#}
-                </div>
+{#                    <div class="button_delivery">#}
+{#                    </div>#}
+{#                </div>#}
             </div>
         </section>
 
