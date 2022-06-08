@@ -21,10 +21,10 @@ from model.yandex import *
 @app.route('/status_yandex', methods=['POST', 'GET'])
 def view_status_yandex():
     if 'result' not in session:
-        print(f'-----> Yandex. Redirect to view_index ')
+        log.info(f'YANDEX. NO RESULT. Redirect to view_index ')
         return redirect(url_for('view_index'))
     new_url = request_yandex()
-    print(f'-----> Yandex. Redirect to: {new_url} ')
+    log.info(f'YANDEX. Redirect to: {new_url} ')
     return redirect(new_url)
 
 
@@ -48,11 +48,12 @@ def view_select_delivery(iin, num_order):
 
 @app.route('/', methods=['POST', 'GET'])
 def view_index():
+    session['language'] = 'ru'
     if request.method == "POST":
         num_order = request.form['num_order']
         iin = request.form['iin']
         if num_order and iin:
-            print(f'Получен запрос с номером заявки: {num_order}, iin: {iin}')
+            log.info(f'Получен запрос с номером заявки: {num_order}, iin: {iin}')
             session['iin'] = iin
             session['num_order'] = num_order
             return redirect(url_for('view_select_delivery', iin=iin, num_order=num_order))

@@ -1,5 +1,5 @@
 from main_app import app, log
-import  app_config as cfg
+import app_config as cfg
 from util.i18n import i18n
 from flask import send_from_directory, session, redirect, url_for, request
 import psutil
@@ -39,26 +39,12 @@ def get_i18n_value(res_name):
     try:
         lang = session['language']
     except KeyError:
-        lang = cfg.language
+        lang = 'ru'
+    finally:
         session['language'] = lang
     if cfg.debug_level > 4:
         log.debug(f'Get i18N value: {lang} : {res_name}')
-    if cfg.src_lang == 'db':
-        con = get_connection()
-        cursor = con.cursor()
-        return_value = cursor.callfunc("GET I18n Value", str, [lang, res_name])
-        cursor.close()
-        con.close()
-    if cfg.src_lang == 'file':
-        return_value = i18n.get_resource(lang, res_name)
-        # if lang == 'ru':
-        #     file = open('i18n.'+lang, "r")
-        #     read = file.read()
-        #
-        #     for line in read.splitlines():
-        #         if res_name in line:
-        #             return_value = line.split('=', 1)[1]
-        #     file.close()
+    return_value = i18n.get_resource(lang, res_name)
     if cfg.debug_level > 3:
         log.debug(f'Get i18N request value: {return_value}')
     return return_value

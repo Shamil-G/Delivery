@@ -11,6 +11,9 @@ def get_status(num_order, iin):
     try:
         log.info(f"SERVICE REQUEST: num_order: '{num_order}', iin: {iin}, url: {url}")
         resp = requests.get(url)
+        if resp.status_code != 200:
+            status = resp.status_code
+            return
         resp_json = resp.json()
         log.info(f"2. SERVICE REQUEST: num_order: '{num_order}', iin: {iin}, url: {resp_json}")
         if 'orderStatuses' in resp_json:
@@ -73,5 +76,5 @@ def get_status(num_order, iin):
         status = 500
         log.error(f"=====> ERROR REQUEST: {num_order} : {iin}. error: {e}")
     finally:
-        # print(f"====> 2. GET STATUS. RESULT: {result}")
+        # print(f"====> FINALLY. GET STATUS. STATUS: {status}, RESULT: {result}")
         return status, result
