@@ -10,7 +10,7 @@
         <header>
             <div style="display: flex; justify-content: left; align-items: center">
                 <div><h4 style="margin-left: 20px;align: left;">GOV4C</h4></div>
-<title>{% block title %}{% endblock %}</title>
+                <title>{% block title %}{% endblock %}</title>
                 <div><h5 style="margin-left: 20px; color:green; align: left;">{{ res_value('APP_NAME') }}</h5></div>
 {#                <div><h4 style="margin-left: 20px">{{ res_value('CONDITION') }}</h4></div>#}
             </div>
@@ -21,8 +21,11 @@
                 <form method="POST">
                     <div class="form-doc grid_box" >
                         <div>
+{#                                <input class="input_order" type="text" name="num_order" width="12" maxlength="12" placeholder="Номер заказа" value="002226651471">#}
+{#                                <input class="input_order" type="text"  name="iin" width="12" maxlength="12" placeholder="ИИН" value="811117450992">#}
 {#                                <input class="input_order" type="text" name="num_order" width="12" maxlength="12" placeholder="Номер заказа" value="002223410244">#}
 {#                                <input class="input_order" type="text"  name="iin" width="12" maxlength="12" placeholder="ИИН" value="691226402472">#}
+
                                 <input class="input_order" type="text" name="num_order" width="12" maxlength="12" placeholder="Номер заказа">
                                 <input class="input_order" type="text"  name="iin" width="12" maxlength="12" placeholder="ИИН">
                         </div>
