@@ -12,12 +12,10 @@ if using[0:7] != 'DEV_WIN':
     host = 'express.gov4c.kz'
     os = 'unix'
     debug_level = 2
-    FACE_CONTROL_ENABLE = True
     port = 5050
 else:
     os = '!unix'
     debug_level = 4
-    FACE_CONTROL_ENABLE = True
     host = 'localhost'
     port = 80
 
