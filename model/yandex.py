@@ -28,26 +28,20 @@ def request_yandex():
     #         '"organization": {"code": "'+result['orgCode']+'", "nameRu": "'+result['org_nameRu']+'", ' \
     #         '"nameKz": "'+result['org_nameKz']+'" ' \
     #         '}}'
-    fio_s = ''
-    if 'firstname' in result and result['firstname'] is not None:
-        fio_s = '"firstname": "'+result['firstname']+'", '
-    if 'lastname' in result and result['lastname'] is not None:
-        fio_s = fio_s + '"lastname": "'+result['lastname']+'", '
-    if 'middlename' in result and result['middlename'] is not None:
-        fio_s = fio_s + '"middlename": "'+result['middlename']+'", '
-    if 'phone' in result and result['phone'] is not None:
-        fio_s = fio_s + '"phone": "'+result['phone']+'", '
-
-    req_s = '{"iin": "' + iin + '", "requestId": "' + num_order + '", ' + fio_s + \
-            '"serviceType": {"code": "'+result['serviceCode']+'", "nameRu": "'+result['serviceNameRu'] + \
-            '", "nameKz": "'+result['serviceNameKz'] + \
-            '"}, "organization": {"code": "'+result['orgCode']+'", "nameRu": "'+result['org_nameRu'] + \
-            '", "nameKz": "'+result['org_nameKz'] + \
+    req_s = '{"iin": "' + str(iin) + '", "requestId": "' + str(num_order) + \
+            '", "firstname": "' + str(result['firstname']) + \
+            '", "lastname": "' + str(result['lastname']) + \
+            '", "middlename": "' + str(result['middlename']) + \
+            '", "phone": "' + str(result['phone']) + \
+            '", "serviceType": {"code": "'+str(result['serviceCode'])+'", "nameRu": "'+str(result['serviceNameRu']) + \
+            '", "nameKz": "'+str(result['serviceNameKz']) + \
+            '"}, "organization": {"code": "'+str(result['orgCode'])+'", "nameRu": "'+str(result['org_nameRu']) + \
+            '", "nameKz": "'+str(result['org_nameKz']) + \
             '"}}'
 
     # print(f"---------> Yandex req_json2: {req_s}")
     req_json2 = json.loads(req_s)
-    # print(f"---------> Yandex req_json2: {req_json2}")
+    log.info(f"---------> Yandex req_json2: {req_json2}")
     resp = requests.post(url, json=req_json2)
     if resp.status_code == 200:
         resp_json = resp.json()

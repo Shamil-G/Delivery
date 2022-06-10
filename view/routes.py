@@ -35,14 +35,18 @@ def view_select_delivery(iin, num_order):
     # log.info(f"DELIVERY STARTED. {session['iin']} ")
     status, result = get_status(num_order, iin)
     log.info(f"DELIVERY STARTED. iin: {iin}, num_order: {num_order}, status: {status}, result: {result} ")
-    if status == 500:
-        session['info'] = f"Техническая ошибка Сервиса! ИИН: {iin} Заказ №:{num_order}"
-        return redirect(url_for('view_index'))
-    if status == 0:
-        session['info'] = f"Для ИИН: {iin} Заказ №:{num_order} отсутствует"
+    if status != 1:
+        if status == 500:
+            session['info'] = f"Техническая ошибка Сервиса! ИИН: {iin} Заказ №:{num_order}"
+        elif status == -1:
+            session['info'] = f"Тип заявки неизвестен. Заказ №:{num_order}, ИИН: {iin}"
+        elif status == 0:
+            session['info'] = f"Для ИИН: {iin} Заказ №:{num_order} отсутствует"
+        else:
+            session['info'] = f"Сервис вернул ошибку: {status}! ИИН: {iin} Заказ №:{num_order}"
+        log.error(f"{session['info']}")
         return redirect(url_for('view_index'))
     session['result'] = result
-    # log.info(f"------> DELIVERY SESSION RESULT: {session['result']}")
     return render_template("select_delivery.html", iin=session['iin'], url_my_khat=cfg.myKHAT_host)
 
 

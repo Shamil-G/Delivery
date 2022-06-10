@@ -115,14 +115,16 @@ def get_status(num_order, iin):
             status = 1
             if 'orderStatuses' in resp_json:
                 result['order_Statuses'] = resp_json['orderStatuses']
-        if 'data' in resp_json:
+        elif 'data' in resp_json:
             result = get_status_data(resp_json)
-            status = 1
-        log.info(f"GET STATUS. RESULT. {result}")
+            if 'resultCode' in result and result['resultCode'] == 'OK':
+                status = 1
+        else:
+            status = -1
         resp.close()
     except Exception as e:
         status = resp.status_code
         log.error(f"=====> ERROR REQUEST: {num_order} : {iin}. resp.status_code: {resp.status_code}, error: {e}")
     finally:
-        print(f"====> FINALLY. GET STATUS. STATUS: {status}, RESULT: {result}")
+        log.info(f"GET STATUS. STATUS: {status}, RESULT: {result}")
         return status, result
