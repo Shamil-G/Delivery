@@ -1,6 +1,7 @@
 [Unit]
 Description=Gunicorn instance to serve DELIVERY
-After=network.target
+Requires=postgresql-14.service
+After=network.target postgresql-14.service
 
 [Service]
 Type=simple
