@@ -1,7 +1,7 @@
 import psycopg2 as pgsql
 from psycopg2 import OperationalError, pool
 import db_config as cfg
-from main_app import log
+from util.logger import log
 
 st_log = 'create table if not exists service_log(order_num varchar(12) primary key, ' \
          'date_order timestamp, date_delivery date, service_name varchar(32), iin char(12), ' \
