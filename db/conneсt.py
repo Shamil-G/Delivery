@@ -15,7 +15,7 @@ try:
                                             host=cfg.db_host)
     print('Connection POOL was created')
 except OperationalError as error:
-    print(f'Ошибка создания пула соединений к БД {error}')
+    print(f'Ошибка создания пула соединений к БД {cfg.database} : {error}')
 
 
 def get_connect():
@@ -39,7 +39,6 @@ def add_init_record(order_num, service_name, iin, status, type):
     except Exception as e2:
         log.info(e2)
     finally:
-        cursor.close()
         _pool.putconn(conn)
 
 
@@ -49,12 +48,13 @@ def add_service_record(order_num, service_name, iin, status, type):
         with conn.cursor() as cursor:
             stmt = f"insert into service_log(order_num, date_order, service_name, iin, status, type) " \
                    f"values('{order_num}', clock_timestamp(), '{service_name}', '{iin}', '{status}', '{type}')"
-            print(f"--> {stmt}")
+            print(f"--> ADD SERVICE RECORD to {cfg.database} on {cfg.db_host}: {stmt}")
             cursor.execute(stmt)
-            print(f"--> To commit ...")
+            log.info(f"--> ADD SERVICE RECORD to {cfg.database} on {cfg.db_host}: {stmt}")
             cursor.execute('commit')
+    except Exception as e2:
+        log.info(e2)
     finally:
-        cursor.close()
         _pool.putconn(conn)
 
 
@@ -65,22 +65,23 @@ def create_log():
             cursor.execute('drop table service_log')
             cursor.execute('commit')
             cursor.execute(st_log)
+    except Exception as e2:
+        log.info(e2)
     finally:
-        cursor.close()
         _pool.putconn(conn)
 
 
 def select(stmt):
+    sel_rec = []
     try:
         conn = get_connect()
         with conn.cursor() as cursor:
             print(f"Выбираем данные: {stmt}")
             cursor.execute(stmt)
             sel_rec = cursor.fetchall()
-            return sel_rec
     finally:
-        cursor.close()
         _pool.putconn(conn)
+        return sel_rec
 
 
 if __name__ == "__main__":
@@ -89,6 +90,8 @@ if __name__ == "__main__":
     # add_init_record('333444', 'Yandex', '630112300169', 'direct', 'Справка о адресе проживания')
     # add_init_record('444555', 'myKhat', '630112300169', 'direct', 'Справка о рождении')
     # print(f"Добавили записи ...")
+    records = select('select * from service_log')
+    records = select('select * from service_log')
     records = select('select * from service_log')
     for _ in records:
         print(f"{_}")
