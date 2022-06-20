@@ -1,61 +1,94 @@
 import psycopg2 as pgsql
 from psycopg2 import OperationalError, pool
+import db_config as cfg
+from main_app import log
 
-
-st_log = 'create table service_log(id serial primary key, ' \
-         'date_op timestamp, service_name varchar(32), iin char(12), status varchar(64))'
+st_log = 'create table if not exists service_log(order_num varchar(12) primary key, ' \
+         'date_order timestamp, date_delivery date, service_name varchar(32), iin char(12), ' \
+         'status varchar(64), type varchar(132), status_delivery varchar(64))'
 
 try:
-    _pool = pgsql.pool.SimpleConnectionPool(1, 5,
-                            database='delivery',
-                            user='delivery',
-                            password='delivery',
-                            host='10.51.203.159')
+    _pool = pgsql.pool.SimpleConnectionPool(cfg.db_min_connection, cfg.db_max_connection,
+                                            database=cfg.database,
+                                            user=cfg.db_user,
+                                            password=cfg.db_password,
+                                            host=cfg.db_host)
+    print('Connection POOL was created')
 except OperationalError as error:
-    print('Ошибка подключения к БД')
+    print(f'Ошибка создания пула соединений к БД {error}')
 
 
 def get_connect():
     if _pool:
-        print('Connection POOL was created')
+        # print('Получаем соединение из POOL')
         return _pool.getconn()
     else:
         return None
 
 
-def create_log():
-    with get_connect().cursor() as cursor:
-        cursor.execute('drop table service_log')
-        cursor.execute(st_log)
-        cursor.execute('insert into service_log(date_op, service_name, iin, status) '
-                       "values(clock_timestamp (), 'clock_timestamp', '630112300169', 'NO ORDER')  ")
-
-        cursor.execute('insert into service_log(date_op, service_name, iin, status) '
-                       "values(now(), 'now', '630112300169', 'NO ORDER')  ")
-
-        cursor.execute('insert into service_log(date_op, service_name, iin, status) '
-                       "values(current_timestamp, 'current_timestamp', '630112300169', 'NO ORDER')  ")
-
-        cursor.execute('commit')
-        cursor.execute("select id, to_char(date_op, 'YYYY-MM-DD HH24:MI:SS'), "
-                       "service_name, iin, status from service_log")
-        rec = cursor.fetchall()
-
+def add_init_record(order_num, service_name, iin, status, type):
+    try:
+        conn = get_connect()
+        with conn.cursor() as cursor:
+            stmt = f"insert into service_log(order_num, date_order, service_name, iin, status, type) " \
+                   f"values('{order_num}', clock_timestamp(), '{service_name}', '{iin}', '{status}', '{type}')"
+            print(f"--> ADD INIT RECORD to {cfg.database} on {cfg.db_host}: {stmt}")
+            log.info(f"--> ADD INIT RECORD to {cfg.database} on {cfg.db_host}: {stmt}")
+            cursor.execute(stmt)
+            cursor.execute('commit')
+    except Exception as e2:
+        log.info(e2)
+    finally:
         cursor.close()
-        return rec
+        _pool.putconn(conn)
+
+
+def add_service_record(order_num, service_name, iin, status, type):
+    try:
+        conn = get_connect()
+        with conn.cursor() as cursor:
+            stmt = f"insert into service_log(order_num, date_order, service_name, iin, status, type) " \
+                   f"values('{order_num}', clock_timestamp(), '{service_name}', '{iin}', '{status}', '{type}')"
+            print(f"--> {stmt}")
+            cursor.execute(stmt)
+            print(f"--> To commit ...")
+            cursor.execute('commit')
+    finally:
+        cursor.close()
+        _pool.putconn(conn)
+
+
+def create_log():
+    try:
+        conn = get_connect()
+        with conn.cursor() as cursor:
+            cursor.execute('drop table service_log')
+            cursor.execute('commit')
+            cursor.execute(st_log)
+    finally:
+        cursor.close()
+        _pool.putconn(conn)
 
 
 def select(stmt):
-    with get_connect().cursor() as cursor:
-        cursor.execute(stmt)
-        rec = cursor.fetchall()
+    try:
+        conn = get_connect()
+        with conn.cursor() as cursor:
+            print(f"Выбираем данные: {stmt}")
+            cursor.execute(stmt)
+            sel_rec = cursor.fetchall()
+            return sel_rec
+    finally:
         cursor.close()
-        return rec
+        _pool.putconn(conn)
 
 
 if __name__ == "__main__":
-    records = create_log()
-    # record = select('select * from service_log')
-    # record = select("select version()")
-    for rec in records:
-        print(f"Подключились {rec}")
+    # create_log()
+    # add_init_record('222333', 'Yandex', '630112300169', 'direct', 'Справка об отсутствии судимости')
+    # add_init_record('333444', 'Yandex', '630112300169', 'direct', 'Справка о адресе проживания')
+    # add_init_record('444555', 'myKhat', '630112300169', 'direct', 'Справка о рождении')
+    # print(f"Добавили записи ...")
+    records = select('select * from service_log')
+    for _ in records:
+        print(f"{_}")

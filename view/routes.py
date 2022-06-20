@@ -6,6 +6,7 @@ from model.get_status import get_status
 import requests
 import json
 from model.yandex import *
+from db.conneсt import add_init_record, add_service_record
 
 
 # @app.route('/status_mykhat', methods=['POST', 'GET'])
@@ -25,6 +26,7 @@ def view_status_yandex():
         return redirect(url_for('view_index'))
     new_url = request_yandex()
     log.info(f'YANDEX. Redirect to: {new_url} ')
+    add_init_record(session['num_order'], 'Yandex', session['iin'], 'New order', session['result'].get('serviceNameRu'))
     return redirect(new_url)
 
 
