@@ -4,7 +4,7 @@ import db_config as cfg
 from util.logger import log
 
 st_log = 'create table if not exists service_log(order_num varchar(12) primary key, ' \
-         'date_create timestamp default current_timestamp, date_delivery timestamp, ' \
+         'date_create timestamp default current_timestamp, date_delivery timestamp, region_code varchar(12), ' \
          'service_name varchar(32), iin char(12), ' \
          'status varchar(64), type varchar(132), status_delivery varchar(64))'
 
@@ -27,12 +27,12 @@ def get_connect():
         return None
 
 
-def add_init_record(order_num, service_name, iin, status, type):
+def add_init_record(order_num, region_code, service_name, iin, status, type):
     try:
         conn = get_connect()
         with conn.cursor() as cursor:
-            stmt = f"insert into service_log(order_num, service_name, iin, status, type) " \
-                   f"values('{order_num}', '{service_name}', '{iin}', '{status}', '{type}')"
+            stmt = f"insert into service_log(order_num, region_code, service_name, iin, status, type) " \
+                   f"values('{order_num}', '{region_code}', '{service_name}', '{iin}', '{status}', '{type}')"
             print(f"--> ADD INIT RECORD to {cfg.database} on {cfg.db_host}: {stmt}")
             log.info(f"--> ADD INIT RECORD to {cfg.database} on {cfg.db_host}: {stmt}")
             cursor.execute(stmt)
@@ -63,9 +63,9 @@ def create_log():
     try:
         conn = get_connect()
         with conn.cursor() as cursor:
-            cursor.execute('drop table service_log')
-            cursor.execute('commit')
+            # cursor.execute('drop table service_log')
             cursor.execute(st_log)
+            cursor.execute('commit')
     except Exception as e2:
         log.info(e2)
     finally:
@@ -87,7 +87,7 @@ def select(stmt):
 
 if __name__ == "__main__":
     create_log()
-    # add_init_record('222333', 'Yandex', '630112300169', 'direct', 'Справка об отсутствии судимости')
+    add_init_record('222333', '12345', 'Yandex', '630112300169', 'direct', 'Справка об отсутствии судимости')
     # add_init_record('333444', 'Yandex', '630112300169', 'direct', 'Справка о адресе проживания')
     # add_init_record('444555', 'myKhat', '630112300169', 'direct', 'Справка о рождении')
     # print(f"Добавили записи ...")

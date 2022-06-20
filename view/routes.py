@@ -26,7 +26,8 @@ def view_status_yandex():
         return redirect(url_for('view_index'))
     new_url = request_yandex()
     log.info(f'YANDEX. Redirect to: {new_url} ')
-    add_init_record(session['num_order'], 'Yandex', session['iin'], 'New order', session['result'].get('serviceNameRu'))
+    add_init_record(session['num_order'], session['result'].get('regionCode'), 'Yandex', session['iin'], 'New order',
+                    session['result'].get('serviceNameRu'))
     return redirect(new_url)
 
 
