@@ -9,18 +9,16 @@ from model.yandex import *
 from db.conneсt import add_init_record, add_service_record
 
 
-# @app.route('/status_mykhat', methods=['POST', 'GET'])
-# def view_status_mykhat():
-#     # result = session['result']
-#     # print(f"===> VIEW STATUS myKHAT. PAYMENTS. url: {cfg.myKHAT_host} : {result}")
-#     # if 'iscash' in result and result['iscash']==False:
-#     #     return redirect('new_order_mykhat')
-#     # else:
-#     return redirect(cfg.myKHAT_host)
+@app.route('/goto-mykhat', methods=['POST', 'GET'])
+def view_goto_mykhat():
+    log.info(f'myKHAT. Redirect to: {cfg.myKHAT_host} ')
+    add_init_record(session['num_order'], session['result'].get('regionCode'), 'myKHAT', session['iin'], 'New order',
+                    session['result'].get('serviceNameRu'))
+    return redirect(cfg.myKHAT_host)
 
 
-@app.route('/status_yandex', methods=['POST', 'GET'])
-def view_status_yandex():
+@app.route('/goto-yandex', methods=['POST', 'GET'])
+def view_goto_yandex():
     if 'result' not in session:
         log.info(f'YANDEX. NO RESULT. Redirect to view_index ')
         return redirect(url_for('view_index'))
