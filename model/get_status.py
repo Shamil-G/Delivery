@@ -15,7 +15,8 @@ def get_status_data(resp_json):
         data = resp_json['data']
         result['iin'] = data['iin']
         result['num_order'] = data['requestId']
-        log.info(f"1. GET STATUS DATA. num_order: {result['num_order']}, iin: {result['iin']}, order: {result['num_order']}")
+        if cfg.debug_level > 1:
+            log.info(f"1. GET STATUS DATA. num_order: {result['num_order']}, iin: {result['iin']}, order: {result['num_order']}")
         serviceType = data['serviceType']
         if serviceType:
             result['serviceCode'] = serviceType['code']
@@ -50,7 +51,8 @@ def get_status_order(resp_json):
     ido = order['id']
     result['iin'] = order['iin']
     result['num_order'] = order['originalOrderNumber']
-    log.info(f"1. GET STATUS ORDER. num_order: {result['num_order']}, iin: {result['iin']}, order: {order}")
+    if cfg.debug_level > 1:
+        log.info(f"1. GET STATUS ORDER. num_order: {result['num_order']}, iin: {result['iin']}, order: {order}")
     result['ext_num_order'] = order['externalOrderNumber']
     result['street'] = order['street']
     result['house'] = order['house']
@@ -103,13 +105,15 @@ def get_status(num_order, iin):
     status = 0
     result = {}
     try:
-        log.info(f"1. SERVICE REQUEST: num_order: '{num_order}', iin: {iin}, url: {url}")
+        if cfg.debug_level > 1:
+            log.info(f"1. SERVICE REQUEST: num_order: '{num_order}', iin: {iin}, url: {url}")
         resp = requests.get(url)
         if resp.status_code != 200:
             status = resp.status_code
             return
         resp_json = resp.json()
-        log.info(f"2. SERVICE REQUEST: num_order: '{num_order}', iin: {iin}, url: {resp_json}")
+        if cfg.debug_level > 1:
+            log.info(f"2. SERVICE REQUEST: num_order: '{num_order}', iin: {iin}, url: {resp_json}")
         if 'order' in resp_json:
             result = get_status_order(resp_json)
             status = 1
@@ -124,7 +128,8 @@ def get_status(num_order, iin):
         resp.close()
     except Exception as e:
         status = resp.status_code
-        log.error(f"=====> ERROR REQUEST: {num_order} : {iin}. resp.status_code: {resp.status_code}, error: {e}")
+        log.error(f"ERROR GET STATUS. {num_order} : {iin}. resp.status_code: {resp.status_code}, error: {e}")
     finally:
-        log.info(f"GET STATUS. STATUS: {status}, RESULT: {result}")
+        if cfg.debug_level > 1:
+            log.info(f"GET STATUS. STATUS: {status}, RESULT: {result}")
         return status, result
