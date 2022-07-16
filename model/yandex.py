@@ -34,14 +34,17 @@ def request_yandex():
             '", "middlename": "' + str(result['middlename']) + \
             '", "phone": "' + str(result['phone']) + \
             '", "serviceType": {"code": "'+str(result['serviceCode'])+'", "nameRu": "'+str(result['serviceNameRu']) + \
-            '", "nameKz": "'+str(result['serviceNameKz']) + \
+            '", "nameKz": "'+str(result['serviceNameKz']).replace('"', '\'') + \
             '"}, "organization": {"code": "'+str(result['orgCode'])+'", "nameRu": "'+str(result['org_nameRu']) + \
-            '", "nameKz": "'+str(result['org_nameKz']) + \
+            '", "nameKz": "'+str(result['org_nameKz'].replace('"', '\'')) + \
             '"}}'
 
-    # print(f"---------> Yandex req_json2: {req_s}")
-    req_json2 = json.loads(req_s)
-    log.info(f"---------> Yandex req_json2: {req_json2}")
+    try:
+        req_json2 = json.loads(req_s)
+        log.info(f"---------> Yandex req_json2: {req_json2}")
+    except json.decoder.JSONDecodeError as e:
+        log.error(f"=====> ERROR create YANDEX JSON: {req_s} : {e}")
+        return ''
     resp = requests.post(url, json=req_json2)
     if resp.status_code == 200:
         resp_json = resp.json()

@@ -6,7 +6,7 @@ from util.logger import log
 st_create_table = 'create table if not exists service_log(order_num varchar(12), ' \
          'date_create timestamp default current_timestamp, date_delivery timestamp, region_code varchar(12), ' \
          'service_name varchar(32), iin char(12), ' \
-         'status varchar(64), type varchar(132), status_delivery varchar(64))'
+         'status varchar(64), type varchar(256), status_delivery varchar(64))'
 
 st_create_index = 'create unique index if not exists pk_service_log on public.service_log(order_num, service_name)'
 
