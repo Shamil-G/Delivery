@@ -33,10 +33,14 @@ def request_yandex():
             '", "lastname": "' + str(result['lastname']) + \
             '", "middlename": "' + str(result['middlename']) + \
             '", "phone": "' + str(result['phone']) + \
-            '", "serviceType": {"code": "'+str(result['serviceCode'])+'", "nameRu": "'+str(result['serviceNameRu']) + \
-            '", "nameKz": "'+str(result['serviceNameKz']).replace('"', '\'') + \
-            '"}, "organization": {"code": "'+str(result['orgCode'])+'", "nameRu": "'+str(result['org_nameRu']) + \
-            '", "nameKz": "'+str(result['org_nameKz'].replace('"', '\'')) + \
+            '", "serviceType": {"code": "'+str(result['serviceCode'])+'", "nameRu": "' + \
+            str(result['serviceNameRu']).replace('"', '\'') + \
+            '", "nameKz": "' + \
+            str(result['serviceNameKz']).replace('"', '\'') + \
+            '"}, "organization": {"code": "'+str(result['orgCode'])+'", "nameRu": "' + \
+            str(result['org_nameRu']).replace('"', '\'') + \
+            '", "nameKz": "' + \
+            str(result['org_nameKz'].replace('"', '\'')) + \
             '"}}'
 
     try:
